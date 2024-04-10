@@ -221,3 +221,6 @@ Plotting tools
    - `Meshlab <http://www.meshlab.net/>`_
    - `View3dscene <https://castle-engine.io/view3dscene.php>`_
    
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/shahramyalameha/ElATools.svg?variant=adaptive)](https://starchart.cc/shahramyalameha/ElATools)
