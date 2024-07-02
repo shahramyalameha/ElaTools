@@ -1150,9 +1150,9 @@ IF(d2d3 == 3) THEN !@@@@@@@@@@@@@@@@@@@@@@@ 2D_3D system start
     !inter_phi=Nmesh_phi/Nmesh_phIF 
         !
   open(59, FILE='.aelastpro')
-
+  
   IF (yn_veloc=='Y' .or. yn_veloc=='y') THEN
-    open(55, FILE='.aelastpro2')
+    open(655, FILE='.aelastpro2')
   ENDIF
   
 !! Start loop=0 for wave  and elste pro.============================
@@ -1638,10 +1638,10 @@ ENDIF
                   pughminp*1000D0,pughminn*1000D0,pughavep*1000D0,hardvar
                   
       IF (yn_veloc=='Y' .or. yn_veloc=='y') THEN
-        WRITE(55,*) VVP_P/1000D0,VVG_P/1000D0,VVP_Sf/1000D0,VVG_Sf/1000D0,VVP_Ss/1000D0,VVG_Ss/1000D0,VV_P_PF,VV_Sf_PF,VV_Ss_PF,km
+      !rite(*,*)"GH"
+        WRITE(655,*) VVP_P/1000D0,VVG_P/1000D0,VVP_Sf/1000D0,VVG_Sf/1000D0,VVP_Ss/1000D0,VVG_Ss/1000D0,VV_P_PF,VV_Sf_PF,VV_Ss_PF,km
       ENDIF
-      
-      
+     
       WRITE(111,*) theta, phi
       WRITE(115,"(3F30.15)")vec(1),vec(2),vec(3)
       
@@ -1741,7 +1741,7 @@ WRITE(30,"(9F30.15)") vec(1)*ABS( bulk_m2 ),       vec(2)*ABS( bulk_m2    ),    
   !CLOSE(23)
   !CLOSE(24)
   !CLOSE(7 )
-  !CLOSE(8 )
+   !LOSE(55)
   CLOSE (30)
   CLOSE (31)
   CLOSE (32)
@@ -1760,6 +1760,7 @@ WRITE(30,"(9F30.15)") vec(1)*ABS( bulk_m2 ),       vec(2)*ABS( bulk_m2    ),    
   CLOSE (41)
 
   CLOSE (59)
+  CLOSE (655)
   !CALL("touch .MaMiout2")
  ! IF (yn_veloc=='Y' .or. yn_veloc=='y') THEN
     OPEN(37,file='.MaMiout2')
@@ -2627,7 +2628,7 @@ WRITE(30,"(9F30.15)") vec(1)*ABS( bulk_m2 ),       vec(2)*ABS( bulk_m2    ),    
       CALL SYSTEM('mv .MaMiout      DatFile')
       CALL SYSTEM('mv  MESH         DatFile')
       CALL SYSTEM('mv .MaMiout2     DatFile')
-      CALL SYSTEM('IF [ -e .aelastpro2 ]; THEN mv .aelastpro2   DatFile; fi')
+      CALL SYSTEM('if [ -e .aelastpro2 ]; then mv .aelastpro2 DatFile; fi')
       !CALL SYSTEM('IF [ -e HKL ]; THEN mv HKL DatFile; fi')
     ELSE
       !CALL zerofile()
@@ -2642,7 +2643,7 @@ WRITE(30,"(9F30.15)") vec(1)*ABS( bulk_m2 ),       vec(2)*ABS( bulk_m2    ),    
       CALL SYSTEM('mv .MaMiout    DatFile')
       CALL SYSTEM('mv  MESH       DatFile')
       CALL SYSTEM('mv .MaMiout2   DatFile')
-      CALL SYSTEM('IF [ -e .aelastpro2 ]; THEN mv .aelastpro2   DatFile; fi')
+      CALL SYSTEM('if [ -e .aelastpro2 ]; then mv .aelastpro2 DatFile; fi')
     ENDIF
 !@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
