@@ -16,6 +16,8 @@ PROGRAM wrl_conv
   Mincomp,   &
   Ha_max2,   &
   Ha_min2,   &
+  Ha_max1,   &
+  Ha_min1,   &
   G_max2,    &
   G_min2,    &
   pugh_max2, &
@@ -163,12 +165,14 @@ PROGRAM wrl_conv
   ENDif
  Endif
  OPEN(36,file='.MaMiout')
- read(36,*)  Maxyoung,Minyoung,Maxcomp,Mincomp,G_max2,G_min2,Maxbulk,Minbulk,Pratio_max,Pratio_min,maxEVaTMf,maxEVaLM,minEVaTMf,pugh_max2,pugh_min2 ,Ha_max2,Ha_min2
+ read(36,*)  Maxyoung,Minyoung,Maxcomp,Mincomp,G_max2,G_min2,Maxbulk,Minbulk,Pratio_max,Pratio_min,&
+             maxEVaTMf,maxEVaLM,minEVaTMf,pugh_max2,pugh_min2 ,Ha_max2,Ha_min2 
  IF (ynveloc=='Y' .OR. ynveloc=='y')THEN
    OPEN(37,file='.MaMiout2')
    read(37,*) VVP_P_max ,VVP_P_min ,VVP_Sf_max ,VVP_Sf_min ,VVP_Ss_max ,VVP_Ss_min ,VVG_P_max ,&
             VVG_P_min ,VVG_Sf_max ,VVG_Sf_min ,VVG_Ss_max ,VVG_Ss_min,&
             VV_P_PF_max,VV_Sf_PF_max,VV_Ss_PF_max,VV_P_PF_min,VV_Sf_PF_min,VV_Ss_PF_min,km_max,km_min
+          
    close(37)
  
  ENDIF
